@@ -12,12 +12,12 @@ const { product } = Astro.props;
 
 <article
 	id={`cafe-${product.id}`}
-	class="group flex flex-col overflow-hidden rounded-md border border-surface-elevated bg-surface transition-colors hover:border-accent target:border-accent target:shadow-[0_0_0_3px_rgb(200_116_58/0.35)]"
+	class="group flex flex-col overflow-hidden rounded-md border border-surface-elevated bg-surface transition-[border-color,box-shadow] duration-200 hover:border-accent target:border-accent target:shadow-[0_0_0_3px_rgb(200_116_58/0.35)]"
 >
 	<div
 		class="relative flex aspect-square items-center justify-center bg-surface-elevated text-text-muted"
 	>
-		<svg aria-hidden="true" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#70452E" stroke-width="1" stroke-linejoin="round"><path d="M7 3h10l1 4v14H6V7z"></path><path d="M6 7h12M10 12h4"></path></svg>
+		<svg aria-hidden="true" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#70452E" stroke-width="1" stroke-linejoin="round" class="transition-transform duration-300 ease-(--ease-out-expo) group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"><path d="M7 3h10l1 4v14H6V7z"></path><path d="M6 7h12M10 12h4"></path></svg>
 		<span
 			class="absolute bottom-2.5 left-3 text-[11px] tracking-[0.08em] uppercase"
 			>Foto de producto</span

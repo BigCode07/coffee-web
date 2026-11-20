@@ -14,7 +14,7 @@ import { categories } from "../config/site";
 				<a
 					href="#destacados"
 					class:list={[
-						"flex min-h-20 flex-col justify-between rounded-md border p-4 text-text no-underline transition-colors hover:border-accent sm:min-h-28 sm:p-5",
+						"group flex min-h-20 flex-col justify-between rounded-md border p-4 text-text no-underline transition-colors hover:border-accent sm:min-h-28 sm:p-5",
 						category.highlight
 							? "col-span-2 border-border bg-surface-elevated sm:col-span-1"
 							: "border-surface-elevated bg-surface",
@@ -29,7 +29,7 @@ import { categories } from "../config/site";
 						{String(i + 1).padStart(2, "0")}
 						{category.tag && ` · ${category.tag}`}
 					</span>
-					<span class="font-display text-xl sm:text-2xl">{category.label}</span>
+					<span class="font-display text-xl transition-transform duration-200 ease-(--ease-out-expo) group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 sm:text-2xl">{category.label}</span>
 				</a>
 			))
 		}
