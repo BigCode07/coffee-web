@@ -1,20 +1,18 @@
 ---
 import { products } from "../config/site";
 import ProductCard from "./ProductCard.astro";
+import ArrowIcon from "./ArrowIcon.astro";
 ---
 
-<section id="destacados" class="container-page pt-16 pb-10 md:pt-24">
+<section id="destacados" class="container-page section-y">
 	<div class="mb-9 flex flex-wrap items-end justify-between gap-4">
 		<div>
-			<p class="eyebrow mb-2">Destacados</p>
-			<h2
-				class="font-display text-[clamp(32px,4vw,48px)] leading-[1.1] font-semibold"
-			>
-				Los favoritos de la semana
-			</h2>
+			<h2 class="section-title">Los favoritos de la semana</h2>
 		</div>
-		<a href="#destacados" class="text-[15px] text-accent-hover transition-colors duration-150 hover:text-text"
-			>Ver toda la tienda →</a
+		<a
+			href="#destacados"
+			class="group inline-flex items-center gap-1.5 text-accent-hover underline decoration-accent/40 underline-offset-[0.35em] transition-colors duration-150 hover:text-text hover:decoration-current text-[15px]"
+			>Ver toda la tienda<ArrowIcon size={16} class="transition-transform duration-200 ease-(--ease-out-expo) group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" /></a
 		>
 	</div>
 	<div

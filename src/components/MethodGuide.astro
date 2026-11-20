@@ -8,11 +8,7 @@ import { brewMethods } from "../config/site";
 >
 	<div class="container-page flex flex-wrap items-start gap-8 py-12 md:gap-12 md:py-20">
 		<div class="flex flex-[1_1_360px] flex-col gap-4">
-			<p class="eyebrow">Guía</p>
-			<h2
-				id="quiz-title"
-				class="font-display text-[clamp(32px,4vw,44px)] leading-[1.1] font-semibold"
-			>
+			<h2 id="quiz-title" class="section-title">
 				Elegí tu café según tu método
 			</h2>
 			<p class="text-text-muted">
@@ -52,15 +48,15 @@ import { brewMethods } from "../config/site";
 						<p class="text-xs tracking-[0.12em] text-text-muted uppercase">
 							Para {method.recommendation.label} te recomendamos
 						</p>
-						<h3 class="font-display text-[30px] font-semibold">
+						<h3 class="font-display text-[1.875rem] leading-tight font-medium tracking-[-0.02em]">
 							{method.recommendation.product}
 						</h3>
 						<dl class="grid grid-cols-2 gap-3">
-							<div class="rounded-sm bg-surface p-3.5">
+							<div class="rounded-md bg-surface p-3.5">
 								<dt class="text-xs text-text-muted">Tueste</dt>
 								<dd class="mt-1 font-semibold">{method.recommendation.roast}</dd>
 							</div>
-							<div class="rounded-sm bg-surface p-3.5">
+							<div class="rounded-md bg-surface p-3.5">
 								<dt class="text-xs text-text-muted">Molienda</dt>
 								<dd class="mt-1 font-semibold">{method.recommendation.grind}</dd>
 							</div>

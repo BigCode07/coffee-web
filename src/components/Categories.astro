@@ -2,15 +2,15 @@
 import { categories } from "../config/site";
 ---
 
-<section aria-labelledby="cat-title" class="container-page py-10 md:py-14">
-	<h2 id="cat-title" class="mb-7 font-display text-[32px] font-semibold">
+<section aria-labelledby="cat-title" class="container-page section-y">
+	<h2 id="cat-title" class="section-title mb-8">
 		Explorá por categoría
 	</h2>
 	<div
 		class="grid grid-cols-2 gap-3 sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))] sm:gap-4"
 	>
 		{
-			categories.map((category, i) => (
+			categories.map((category) => (
 				<a
 					href="#destacados"
 					class:list={[
@@ -26,10 +26,9 @@ import { categories } from "../config/site";
 							category.highlight ? "text-accent-hover" : "text-text-muted",
 						]}
 					>
-						{String(i + 1).padStart(2, "0")}
-						{category.tag && ` · ${category.tag}`}
+						{category.tag ?? "\u00a0"}
 					</span>
-					<span class="font-display text-xl transition-transform duration-200 ease-(--ease-out-expo) group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 sm:text-2xl">{category.label}</span>
+					<span class="font-display text-xl font-medium tracking-[-0.01em] transition-transform duration-200 ease-(--ease-out-expo) group-hover:translate-x-1 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0 sm:text-2xl">{category.label}</span>
 				</a>
 			))
 		}

@@ -2,8 +2,8 @@
 import { reviews } from "../config/site";
 ---
 
-<section aria-labelledby="test-title" class="container-page py-10 md:py-14">
-	<h2 id="test-title" class="mb-7 font-display text-[32px] font-semibold">
+<section aria-labelledby="test-title" class="container-page section-y">
+	<h2 id="test-title" class="section-title mb-8">
 		Lo que dicen quienes ya lo probaron
 	</h2>
 	<div class="grid grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-5">
@@ -12,10 +12,10 @@ import { reviews } from "../config/site";
 				<figure class="flex flex-col gap-3.5 rounded-md border border-surface-elevated bg-surface p-6.5">
 					<div role="img" aria-label="5 de 5 estrellas" class="flex gap-1">
 						{Array.from({ length: 5 }).map(() => (
-							<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="#C8743A"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" /></svg>
+							<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-accent"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z" /></svg>
 						))}
 					</div>
-					<blockquote class="font-display text-[19px] leading-[1.45] italic">
+					<blockquote class="font-display text-xl leading-[1.4] font-light italic">
 						{review.quote}
 					</blockquote>
 					<figcaption class="text-sm text-text-muted">
