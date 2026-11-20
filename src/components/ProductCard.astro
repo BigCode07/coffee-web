@@ -1,0 +1,60 @@
+---
+import { roast } from "../config/site";
+import type { Product } from "../types";
+import FlameIcon from "./FlameIcon.astro";
+
+interface Props {
+	product: Product;
+}
+
+const { product } = Astro.props;
+---
+
+<article
+	id={`cafe-${product.id}`}
+	class="group flex flex-col overflow-hidden rounded-md border border-surface-elevated bg-surface transition-colors hover:border-accent target:border-accent target:shadow-[0_0_0_3px_rgb(200_116_58/0.35)]"
+>
+	<div
+		class="relative flex aspect-square items-center justify-center bg-surface-elevated text-text-muted"
+	>
+		<svg aria-hidden="true" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#70452E" stroke-width="1" stroke-linejoin="round"><path d="M7 3h10l1 4v14H6V7z"></path><path d="M6 7h12M10 12h4"></path></svg>
+		<span
+			class="absolute bottom-2.5 left-3 text-[11px] tracking-[0.08em] uppercase"
+			>Foto de producto</span
+		>
+		<span
+			class="absolute top-3 right-3 hidden rounded-full bg-accent px-2.5 py-1 text-[11px] font-semibold tracking-[0.08em] text-bg uppercase group-target:inline-flex"
+			>Tu recomendación</span
+		>
+	</div>
+	<div class="flex flex-1 flex-col gap-2.5 p-4.5">
+		<p class="text-xs tracking-[0.12em] text-text-muted uppercase">
+			{product.origin}
+		</p>
+		<h3 class="font-display text-[22px] font-semibold">{product.name}</h3>
+		<ul aria-label="Notas de cata" class="flex list-none flex-wrap gap-1.5">
+			{
+				product.notes.map((note) => (
+					<li class="rounded-full border border-border px-2.5 py-1 text-xs">
+						{note}
+					</li>
+				))
+			}
+		</ul>
+		<p class="flex items-center gap-1.5 text-[13px] text-text-muted">
+			<FlameIcon size={14} class="text-accent" />
+			{roast.lastLabel}
+		</p>
+		<div class="mt-auto flex items-center justify-between gap-3 pt-2.5">
+			<span class="text-lg font-semibold text-accent-hover"
+				>{product.price}</span
+			>
+			<button
+				type="button"
+				data-soon
+				class="btn-primary min-h-11 px-4.5 text-sm"
+				aria-label={`Agregar ${product.name} al carrito`}>Agregar</button
+			>
+		</div>
+	</div>
+</article>

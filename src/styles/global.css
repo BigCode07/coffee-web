@@ -1,0 +1,99 @@
+@import "tailwindcss";
+
+@theme {
+	--color-bg: #0b0705;
+	--color-surface: #1a0f09;
+	--color-surface-elevated: #3b150b;
+	--color-border: #70452e;
+	--color-accent: #c8743a;
+	--color-accent-hover: #e09a5f;
+	--color-text: #efe6da;
+	--color-text-muted: #b5a289;
+	--color-success: #7a8b5a;
+	--color-error: #b5462e;
+
+	--font-display: "Playfair Display", serif;
+	--font-sans: "Inter", sans-serif;
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+		scroll-padding-top: 5.5rem;
+	}
+
+	body {
+		background-color: var(--color-bg);
+		color: var(--color-text);
+		font-family: var(--font-sans);
+		line-height: 1.55;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-accent-hover);
+		outline-offset: 3px;
+	}
+
+	input:focus-visible {
+		outline: none;
+		border-color: var(--color-accent);
+		box-shadow: 0 0 0 3px rgb(200 116 58 / 0.25);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+	}
+}
+
+@utility eyebrow {
+	font-size: 0.8125rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-accent);
+	font-weight: 600;
+}
+
+@utility btn-primary {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3rem;
+	padding-inline: 1.5rem;
+	border-radius: 9999px;
+	background-color: var(--color-accent);
+	color: var(--color-bg);
+	font-weight: 600;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 150ms;
+	&:hover {
+		background-color: var(--color-accent-hover);
+	}
+}
+
+@utility btn-ghost {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 3rem;
+	padding-inline: 1.5rem;
+	border-radius: 9999px;
+	border: 1px solid var(--color-text);
+	color: var(--color-text);
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color 150ms, color 150ms;
+	&:hover {
+		background-color: var(--color-text);
+		color: var(--color-bg);
+	}
+}
+
+@utility container-page {
+	margin-inline: auto;
+	width: 100%;
+	max-width: 80rem;
+	padding-inline: 1.5rem;
+}

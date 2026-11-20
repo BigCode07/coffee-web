@@ -1,0 +1,34 @@
+---
+import { products } from "../config/site";
+import ProductCard from "./ProductCard.astro";
+---
+
+<section id="destacados" class="container-page pt-16 pb-10 md:pt-24">
+	<div class="mb-9 flex flex-wrap items-end justify-between gap-4">
+		<div>
+			<p class="eyebrow mb-2">Destacados</p>
+			<h2
+				class="font-display text-[clamp(32px,4vw,48px)] leading-[1.1] font-semibold"
+			>
+				Los favoritos de la semana
+			</h2>
+		</div>
+		<a href="#destacados" class="text-[15px] text-accent-hover hover:text-text"
+			>Ver toda la tienda →</a
+		>
+	</div>
+	<div
+		role="region"
+		aria-label="Cafés destacados"
+		tabindex="0"
+		class="-mx-6 flex snap-x snap-mandatory scroll-px-6 gap-4 overflow-x-auto overscroll-x-contain px-6 pt-1 pb-3 [scrollbar-color:var(--color-border)_transparent] [scrollbar-width:thin] sm:mx-0 sm:grid sm:grid-cols-[repeat(auto-fill,minmax(240px,1fr))] sm:gap-6 sm:overflow-visible sm:px-0 sm:pt-0 sm:pb-0"
+	>
+		{
+			products.map((product) => (
+				<div class="flex w-65 shrink-0 snap-start sm:w-auto [&>article]:flex-1">
+					<ProductCard product={product} />
+				</div>
+			))
+		}
+	</div>
+</section>

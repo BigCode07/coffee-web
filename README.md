@@ -1,43 +1,57 @@
-# Astro Starter Kit: Minimal
+# Coffee Shop — Landing Page
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Landing page para una tienda de venta de café, construida con [Astro](https://astro.build) y estilizada con [Tailwind CSS](https://tailwindcss.com) v4.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Objetivo
 
-## 🚀 Project Structure
+Usar Tailwind CSS para construir una landing page de venta de café, con estilo cálido y artesanal y contenido en español. Secciones previstas:
 
-Inside of your Astro project, you'll see the following folders and files:
+- Hero con llamado a la acción (CTA)
+- Productos
+- Nosotros / origen del grano
+- Testimonios, contacto y footer
+
+## Stack
+
+- Astro
+- Tailwind CSS 4 (plugin `@tailwindcss/vite`)
+- pnpm
+
+## Comandos
+
+Todos los comandos se ejecutan desde la raíz del proyecto:
+
+| Comando             | Acción                                           |
+| :------------------ | :----------------------------------------------- |
+| `pnpm install`      | Instala dependencias                             |
+| `pnpm dev`          | Inicia el servidor de desarrollo en `localhost:4321` |
+| `pnpm build`        | Genera el sitio de producción en `./dist/`       |
+| `pnpm preview`      | Previsualiza el build local antes de desplegar   |
+| `pnpm astro ...`    | Ejecuta comandos del CLI como `astro add`, `astro check` |
+
+## Tailwind CSS
+
+- El plugin se registra en `astro.config.mjs` (`vite.plugins`).
+- Los estilos globales viven en `src/styles/global.css` (`@import "tailwindcss";`).
+- Importar `global.css` en cada layout o página que use Tailwind.
+
+## Estructura a implementar
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src
+├── pages
+├── components
+├── layouts
+├── styles
+├── scripts
+├── types
+├── utils
+└── config
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Los assets estáticos (imágenes, favicon) van en `public/`.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Documentación
 
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Astro](https://docs.astro.build)
+- [Tailwind CSS](https://tailwindcss.com/docs)

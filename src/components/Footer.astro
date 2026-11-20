@@ -1,0 +1,43 @@
+---
+import { footerColumns, site } from "../config/site";
+---
+
+<footer id="contacto" class="border-t border-surface-elevated bg-surface">
+	<div
+		class="container-page flex flex-wrap justify-between gap-10 pt-16 pb-8"
+	>
+		<div class="flex flex-[1_1_260px] flex-col gap-3">
+			<span class="font-display text-[28px] font-bold text-text"
+				>{site.brand}</span
+			>
+			<p class="max-w-70 text-sm text-text-muted">{site.tagline}</p>
+		</div>
+		{
+			footerColumns.map((column) => (
+				<nav
+					aria-label={column.label}
+					class="flex flex-[0_1_160px] flex-col gap-2.5 text-sm"
+				>
+					<strong class="font-semibold text-text">{column.title}</strong>
+					{column.links.map((link) => (
+						<a
+							href={link.href}
+							class="text-text-muted no-underline hover:text-text"
+							>{link.label}</a
+						>
+					))}
+				</nav>
+			))
+		}
+	</div>
+	<div
+		class="container-page flex flex-wrap justify-between gap-3 border-t border-surface-elevated pt-5 pb-8 text-[13px] text-text-muted"
+	>
+		<span>© {site.year} {site.brand} · {site.legal}</span>
+		<span>Medios de pago: {site.payments}</span>
+		<span>
+			<a href="#" class="text-text-muted hover:text-text">Términos</a> ·
+			<a href="#" class="text-text-muted hover:text-text">Privacidad</a>
+		</span>
+	</div>
+</footer>

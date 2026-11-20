@@ -1,0 +1,29 @@
+---
+import { galleryCount, site } from "../config/site";
+---
+
+<section
+	aria-labelledby="gal-title"
+	class="container-page pt-8 pb-12 md:pt-10 md:pb-18"
+>
+	<div class="mb-5 flex flex-wrap items-baseline justify-between gap-3">
+		<h2 id="gal-title" class="font-display text-[32px] font-semibold">
+			@{site.instagram}
+		</h2>
+		<a
+			href={`https://instagram.com/${site.instagram}`}
+			class="text-accent-hover hover:text-text">Seguinos en Instagram →</a
+		>
+	</div>
+	<div
+		class="grid grid-cols-3 gap-2 sm:grid-cols-[repeat(auto-fill,minmax(180px,1fr))]"
+	>
+		{
+			Array.from({ length: galleryCount }, (_, i) => (
+				<div class="flex aspect-square items-center justify-center border border-dashed border-surface-elevated bg-surface text-xs tracking-[0.08em] text-border uppercase">
+					Foto {i + 1}
+				</div>
+			))
+		}
+	</div>
+</section>

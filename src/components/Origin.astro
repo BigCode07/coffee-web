@@ -1,0 +1,40 @@
+---
+import { originText, processSteps } from "../config/site";
+---
+
+<section
+	id="origen"
+	class="container-page flex flex-wrap items-center gap-8 py-12 md:gap-14 md:py-18"
+>
+	<div
+		class="flex aspect-[16/9] flex-[1_1_380px] md:aspect-[5/4] items-center justify-center rounded-sm border border-dashed border-border bg-surface p-6 text-center text-[13px] tracking-[0.08em] text-text-muted uppercase"
+	>
+		Foto de finca / tostadero
+	</div>
+	<div class="flex flex-[1_1_440px] flex-col gap-5">
+		<p class="eyebrow">Origen y proceso</p>
+		<h2
+			class="font-display text-[clamp(32px,4vw,48px)] leading-[1.1] font-semibold"
+		>
+			De la finca a tu taza
+		</h2>
+		<p class="text-[17px] text-text-muted">{originText}</p>
+		<ol class="mt-3 flex list-none flex-col border-b border-surface-elevated">
+			{
+				processSteps.map((step, i) => (
+					<li class="flex gap-4.5 border-t border-surface-elevated py-4">
+						<span class="w-10 font-display text-[28px] text-accent">
+							{i + 1}
+						</span>
+						<div>
+							<strong class="font-semibold">{step.title}</strong>
+							<p class="mt-1 text-[15px] text-text-muted">
+								{step.description}
+							</p>
+						</div>
+					</li>
+				))
+			}
+		</ol>
+	</div>
+</section>

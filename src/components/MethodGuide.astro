@@ -1,0 +1,99 @@
+---
+import { brewMethods } from "../config/site";
+---
+
+<section
+	aria-labelledby="quiz-title"
+	class="border-y border-surface-elevated bg-surface"
+>
+	<div class="container-page flex flex-wrap items-start gap-8 py-12 md:gap-12 md:py-20">
+		<div class="flex flex-[1_1_360px] flex-col gap-4">
+			<p class="eyebrow">Guía</p>
+			<h2
+				id="quiz-title"
+				class="font-display text-[clamp(32px,4vw,44px)] leading-[1.1] font-semibold"
+			>
+				Elegí tu café según tu método
+			</h2>
+			<p class="text-text-muted">
+				¿Cómo lo preparás? Te recomendamos tueste y molienda.
+			</p>
+			<div
+				role="group"
+				aria-label="Método de preparación"
+				class="mt-2 flex flex-wrap gap-2.5"
+				id="method-buttons"
+			>
+				{
+					brewMethods.map((method, i) => (
+						<button
+							type="button"
+							data-method={method.id}
+							aria-pressed={i === 0 ? "true" : "false"}
+							class="min-h-12 cursor-pointer rounded-full border border-border px-5.5 text-[15px] text-text transition-colors aria-pressed:border-accent aria-pressed:bg-accent aria-pressed:font-semibold aria-pressed:text-bg"
+						>
+							{method.label}
+						</button>
+					))
+				}
+			</div>
+		</div>
+		<div
+			aria-live="polite"
+			class="flex flex-[1_1_420px] flex-col gap-4 rounded-md border border-border bg-bg p-8"
+		>
+			{
+				brewMethods.map((method, i) => (
+					<div
+						data-panel={method.id}
+						hidden={i !== 0}
+						class="flex flex-col gap-4"
+					>
+						<p class="text-xs tracking-[0.12em] text-text-muted uppercase">
+							Para {method.recommendation.label} te recomendamos
+						</p>
+						<h3 class="font-display text-[30px] font-semibold">
+							{method.recommendation.product}
+						</h3>
+						<dl class="grid grid-cols-2 gap-3">
+							<div class="rounded-sm bg-surface p-3.5">
+								<dt class="text-xs text-text-muted">Tueste</dt>
+								<dd class="mt-1 font-semibold">{method.recommendation.roast}</dd>
+							</div>
+							<div class="rounded-sm bg-surface p-3.5">
+								<dt class="text-xs text-text-muted">Molienda</dt>
+								<dd class="mt-1 font-semibold">{method.recommendation.grind}</dd>
+							</div>
+						</dl>
+						<p class="text-[15px] text-text-muted">
+							{method.recommendation.tip}
+						</p>
+						<a
+							href={`#cafe-${method.productId}`}
+							class="btn-primary self-start"
+						>
+							Ver este café
+						</a>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</section>
+
+<script>
+	const buttons = document.querySelectorAll<HTMLButtonElement>("[data-method]");
+	const panels = document.querySelectorAll<HTMLElement>("[data-panel]");
+
+	buttons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const id = button.dataset.method;
+			buttons.forEach((b) =>
+				b.setAttribute("aria-pressed", String(b === button)),
+			);
+			panels.forEach((panel) => {
+				panel.hidden = panel.dataset.panel !== id;
+			});
+		});
+	});
+</script>
