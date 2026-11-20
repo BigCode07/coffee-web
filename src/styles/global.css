@@ -14,6 +14,8 @@
 
 	--font-display: "Playfair Display", serif;
 	--font-sans: "Inter", sans-serif;
+
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @layer base {
@@ -47,6 +49,79 @@
 	}
 }
 
+/* Continuidad: la recomendación y el menú móvil aparecen con un fundido corto. */
+@keyframes rise-in {
+	from {
+		opacity: 0;
+		transform: translateY(6px);
+	}
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+@keyframes fade-in {
+	from {
+		opacity: 0.5;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+/*
+ * Guía de método: los paneles comparten celda y se cruzan. El que sale se apaga
+ * rápido y el que entra aparece un instante después, así nunca se superponen dos
+ * textos a media opacidad. visibility: hidden los saca del orden de tabulación.
+ */
+[data-panel] {
+	transition:
+		opacity 100ms linear,
+		transform 100ms linear,
+		visibility 0s linear 100ms;
+}
+
+[data-panel]:not([data-active]) {
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translateY(4px);
+}
+
+[data-panel][data-active] {
+	opacity: 1;
+	visibility: visible;
+	/* Entra ya visible (su opacidad parte en 0): no necesita retardo de visibility. */
+	transition:
+		opacity 220ms var(--ease-out-expo) 30ms,
+		transform 220ms var(--ease-out-expo) 30ms,
+		visibility 0s;
+}
+
+#mobile-menu:not([hidden]) {
+	animation: rise-in 200ms var(--ease-out-expo) both;
+}
+
+/* Con movimiento reducido se quita el desplazamiento y queda solo el fundido. */
+@media (prefers-reduced-motion: reduce) {
+	#mobile-menu:not([hidden]) {
+		animation: fade-in 150ms var(--ease-out-expo) both;
+	}
+
+	[data-panel]:not([data-active]),
+	[data-panel][data-active] {
+		transform: none;
+	}
+
+	.btn-primary:active,
+	.btn-ghost:active,
+	.icon-btn:active {
+		transform: none;
+		filter: brightness(0.9);
+	}
+}
+
 @utility eyebrow {
 	font-size: 0.8125rem;
 	letter-spacing: 0.18em;
@@ -67,9 +142,14 @@
 	font-weight: 600;
 	text-decoration: none;
 	cursor: pointer;
-	transition: background-color 150ms;
+	transition:
+		background-color 150ms var(--ease-out-expo),
+		transform 100ms var(--ease-out-expo);
 	&:hover {
 		background-color: var(--color-accent-hover);
+	}
+	&:active {
+		transform: scale(0.97);
 	}
 }
 
@@ -84,10 +164,30 @@
 	color: var(--color-text);
 	text-decoration: none;
 	cursor: pointer;
-	transition: background-color 150ms, color 150ms;
+	transition:
+		background-color 150ms var(--ease-out-expo),
+		color 150ms var(--ease-out-expo),
+		transform 100ms var(--ease-out-expo);
 	&:hover {
 		background-color: var(--color-text);
 		color: var(--color-bg);
+	}
+	&:active {
+		transform: scale(0.97);
+	}
+}
+
+@utility icon-btn {
+	color: var(--color-text);
+	cursor: pointer;
+	transition:
+		color 150ms var(--ease-out-expo),
+		transform 100ms var(--ease-out-expo);
+	&:hover {
+		color: var(--color-accent-hover);
+	}
+	&:active {
+		transform: scale(0.92);
 	}
 }
 

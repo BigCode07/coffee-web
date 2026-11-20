@@ -7,7 +7,7 @@ import { site } from "../config/site";
 	role="status"
 	aria-live="polite"
 	data-message={site.soonMessage}
-	class="pointer-events-none fixed bottom-4 left-1/2 z-20 w-[min(92vw,26rem)] -translate-x-1/2 rounded-md border border-accent bg-surface-elevated px-4 py-3 text-center text-sm text-text opacity-0 transition-opacity duration-200 motion-reduce:transition-none"
+	class="pointer-events-none fixed bottom-4 left-1/2 z-20 w-[min(92vw,26rem)] -translate-x-1/2 min-h-11 rounded-md border border-accent bg-surface-elevated px-4 py-3 text-center text-sm text-text opacity-0 translate-y-2 transition-[opacity,translate] duration-200 ease-(--ease-out-expo) motion-reduce:translate-y-0"
 >
 </div>
 
@@ -15,17 +15,27 @@ import { site } from "../config/site";
 	const toast = document.getElementById("toast");
 	let timer: number | undefined;
 
+	const clearIfHidden = () => {
+		if (toast?.classList.contains("opacity-0")) toast.textContent = "";
+	};
+
 	if (toast) {
 		document.addEventListener("click", (event) => {
 			const target = (event.target as Element).closest("[data-soon]");
 			if (!target) return;
 			toast.textContent = toast.dataset.message ?? "";
-			toast.classList.remove("opacity-0");
+			toast.classList.remove("opacity-0", "translate-y-2");
 			window.clearTimeout(timer);
 			timer = window.setTimeout(() => {
-				toast.classList.add("opacity-0");
-				toast.textContent = "";
+				toast.classList.add("opacity-0", "translate-y-2");
+				// Respaldo por si transitionend no llega (p. ej. transiciones desactivadas).
+				window.setTimeout(clearIfHidden, 400);
 			}, 3500);
+		});
+
+		// El texto se vacía cuando termina el fundido, no antes, para que no se vea la caja en blanco.
+		toast.addEventListener("transitionend", (event) => {
+			if (event.propertyName === "opacity") clearIfHidden();
 		});
 	}
 </script>

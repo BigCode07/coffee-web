@@ -3,19 +3,21 @@ import { roast } from "../config/site";
 import FlameIcon from "./FlameIcon.astro";
 ---
 
-<section class="container-page flex flex-wrap items-center gap-10 pt-10 pb-12 md:gap-12 md:pt-12 md:pb-18">
-	<div class="flex flex-[1_1_440px] flex-col gap-6">
+<section
+	class="container-page flex flex-col items-center gap-10 pt-10 pb-12 text-center md:pt-14 md:pb-16"
+>
+	<div class="flex max-w-3xl flex-col items-center gap-6">
 		<p class="eyebrow">Café de especialidad · Tostado semanal</p>
 		<h1
 			class="font-display text-[clamp(44px,6vw,80px)] leading-[1.04] font-semibold tracking-[-0.01em]"
 		>
 			Cada grano,<br /><em class="font-normal text-accent-hover">una historia.</em>
 		</h1>
-		<p class="max-w-[460px] text-lg text-text-muted">
+		<p class="max-w-[520px] text-lg text-text-muted">
 			Cafés de origen, tostados en pequeños lotes y molidos a tu medida. Del
 			productor a tu taza.
 		</p>
-		<div class="mt-2 flex flex-wrap gap-3.5">
+		<div class="mt-2 flex flex-wrap justify-center gap-3.5">
 			<a href="#destacados" class="btn-primary min-h-13 px-7.5 text-base"
 				>Comprar café</a
 			>
@@ -25,10 +27,10 @@ import FlameIcon from "./FlameIcon.astro";
 		</div>
 	</div>
 	<div
-		class="relative flex aspect-[4/3] max-w-[520px] md:aspect-[4/5] flex-[1_1_380px] flex-col items-center justify-center gap-3.5 rounded-sm border border-dashed border-border bg-surface p-8 text-center text-text-muted"
+		class="relative flex aspect-[4/3] w-full flex-col items-center justify-center gap-3.5 rounded-sm border border-dashed border-border bg-surface p-8 text-center text-text-muted md:aspect-[16/9] md:max-h-130"
 	>
 		<p
-			class="absolute top-4 left-4 flex md:top-auto md:bottom-4 items-center gap-2 rounded-full border border-accent bg-bg px-3.5 py-2 text-sm font-semibold text-text"
+			class="absolute bottom-4 left-1/2 flex -translate-x-1/2 items-center gap-2 rounded-full border border-accent bg-bg px-3.5 py-2 text-sm font-semibold whitespace-nowrap text-text"
 		>
 			<FlameIcon size={16} class="text-accent" />
 			{roast.lastLabel}
