@@ -17,7 +17,7 @@ const { product } = Astro.props;
 	<div
 		class="relative flex aspect-square items-center justify-center bg-surface-elevated text-text-muted"
 	>
-		<svg aria-hidden="true" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="#70452E" stroke-width="1" stroke-linejoin="round" class="transition-transform duration-300 ease-(--ease-out-expo) group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"><path d="M7 3h10l1 4v14H6V7z"></path><path d="M6 7h12M10 12h4"></path></svg>
+		<svg aria-hidden="true" width="72" height="72" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linejoin="round" class="text-border transition-transform duration-300 ease-(--ease-out-expo) group-hover:scale-105 motion-reduce:transition-none motion-reduce:group-hover:scale-100"><path d="M7 3h10l1 4v14H6V7z"></path><path d="M6 7h12M10 12h4"></path></svg>
 		<span
 			class="absolute bottom-2.5 left-3 text-[11px] tracking-[0.08em] uppercase"
 			>Foto de producto</span
@@ -31,7 +31,7 @@ const { product } = Astro.props;
 		<p class="text-xs tracking-[0.12em] text-text-muted uppercase">
 			{product.origin}
 		</p>
-		<h3 class="font-display text-[22px] font-semibold">{product.name}</h3>
+		<h3 class="font-display text-2xl leading-tight font-medium tracking-[-0.015em]">{product.name}</h3>
 		<ul aria-label="Notas de cata" class="flex list-none flex-wrap gap-1.5">
 			{
 				product.notes.map((note) => (
@@ -46,7 +46,7 @@ const { product } = Astro.props;
 			{roast.lastLabel}
 		</p>
 		<div class="mt-auto flex items-center justify-between gap-3 pt-2.5">
-			<span class="text-lg font-semibold text-accent-hover"
+			<span class="price text-lg font-semibold text-accent-hover"
 				>{product.price}</span
 			>
 			<button

@@ -2,18 +2,13 @@
 import { plans } from "../config/site";
 ---
 
-<section id="suscripcion" class="container-page pt-16 pb-10 md:pt-24 md:pb-14">
+<section id="suscripcion" class="container-page section-y">
 	<div
 		class="flex flex-col gap-8 rounded-lg bg-surface-elevated p-[clamp(28px,5vw,64px)]"
 	>
 		<div class="flex flex-wrap items-end justify-between gap-x-12 gap-y-4">
 			<div class="max-w-140">
-				<p class="eyebrow mb-2.5 text-accent-hover">Suscripción</p>
-				<h2
-					class="font-display text-[clamp(32px,4vw,48px)] leading-[1.1] font-semibold"
-				>
-					Recibí café fresco cada mes
-				</h2>
+				<h2 class="section-title">Recibí café fresco cada mes</h2>
 			</div>
 			<p class="max-w-90 text-text">
 				Elegí frecuencia y molienda. Pausá o cancelá cuando quieras.
@@ -35,9 +30,9 @@ import { plans } from "../config/site";
 								Más elegido
 							</span>
 						)}
-						<h3 class="font-display text-2xl">{plan.name}</h3>
+						<h3 class="font-display text-2xl font-medium tracking-[-0.015em]">{plan.name}</h3>
 						<p class="text-[15px] text-text-muted">{plan.weight}</p>
-						<span class="text-[22px] font-semibold text-accent-hover">
+						<span class="price text-[22px] font-semibold text-accent-hover">
 							{plan.price}/mes
 						</span>
 						<button

@@ -1,18 +1,20 @@
 ---
 import { galleryCount, site } from "../config/site";
+import ArrowIcon from "./ArrowIcon.astro";
 ---
 
 <section
 	aria-labelledby="gal-title"
-	class="container-page pt-8 pb-12 md:pt-10 md:pb-18"
+	class="container-page section-y"
 >
-	<div class="mb-5 flex flex-wrap items-baseline justify-between gap-3">
-		<h2 id="gal-title" class="font-display text-[32px] font-semibold">
+	<div class="mb-6 flex flex-wrap items-baseline justify-between gap-3">
+		<h2 id="gal-title" class="section-title">
 			@{site.instagram}
 		</h2>
 		<a
 			href={`https://instagram.com/${site.instagram}`}
-			class="text-accent-hover transition-colors duration-150 hover:text-text">Seguinos en Instagram →</a
+			class="group inline-flex items-center gap-1.5 text-accent-hover underline decoration-accent/40 underline-offset-[0.35em] transition-colors duration-150 hover:text-text hover:decoration-current"
+			>Seguinos en Instagram<ArrowIcon size={16} class="transition-transform duration-200 ease-(--ease-out-expo) group-hover:translate-x-0.5 motion-reduce:transition-none motion-reduce:group-hover:translate-x-0" /></a
 		>
 	</div>
 	<div
@@ -20,7 +22,7 @@ import { galleryCount, site } from "../config/site";
 	>
 		{
 			Array.from({ length: galleryCount }, (_, i) => (
-				<div class="flex aspect-square items-center justify-center border border-dashed border-surface-elevated bg-surface text-xs tracking-[0.08em] text-border uppercase">
+				<div class="flex aspect-square items-center justify-center border border-dashed border-surface-elevated bg-surface text-xs tracking-[0.08em] text-text-muted uppercase">
 					Foto {i + 1}
 				</div>
 			))
